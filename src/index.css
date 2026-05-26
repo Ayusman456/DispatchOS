@@ -3,76 +3,102 @@
 @tailwind utilities;
 
 @layer base {
-  body { @apply bg-zinc-950 text-zinc-200 antialiased; }
+  html {
+    font-family: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  body {
+    @apply bg-ibm-surface-1 text-ibm-ink antialiased;
+    letter-spacing: 0.16px;
+  }
+
+  button,
+  a {
+    @apply focus:outline-none focus:ring-2 focus:ring-ibm-primary focus:ring-offset-2 focus:ring-offset-ibm-canvas;
+  }
 }
 
 @layer components {
   .glass-panel {
-    @apply bg-zinc-900/80 backdrop-blur-md border border-zinc-700/50;
+    @apply border border-ibm-hairline bg-ibm-canvas;
   }
+
   .tracking-card {
-    @apply transition-all duration-300 border border-zinc-800 bg-zinc-900 rounded-xl p-4 cursor-pointer;
+    @apply cursor-pointer border border-ibm-hairline bg-ibm-canvas p-5 transition-colors duration-150;
   }
+
   .tracking-card:hover {
-    @apply border-zinc-600 -translate-y-0.5 shadow-xl;
-    box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
+    @apply border-ibm-ink-subtle bg-ibm-surface-1;
   }
+
   .tracking-card.active {
-    @apply border-blue-500;
-    box-shadow: 0 0 0 1px #3b82f6, 0 10px 40px -10px rgba(59,130,246,0.2);
+    @apply border-ibm-primary bg-white;
+    box-shadow: inset 4px 0 0 #0f62fe;
   }
+
   .partner-pill {
-    @apply px-3 py-1.5 rounded-lg border border-zinc-800 bg-zinc-900 text-xs text-zinc-300 flex items-center gap-2 transition-colors hover:bg-zinc-800;
+    @apply flex min-h-10 items-center gap-2 border border-ibm-hairline bg-ibm-canvas px-4 text-sm text-ibm-ink transition-colors hover:bg-ibm-surface-1;
   }
+
   .partner-pill.active {
-    @apply bg-zinc-800 border-zinc-500;
+    @apply border-ibm-ink bg-ibm-ink text-ibm-inverse-ink;
   }
+
   .tab-btn {
-    @apply relative pb-3 text-sm font-medium transition-colors;
+    @apply relative min-h-12 text-sm font-normal transition-colors;
   }
+
   .tab-btn.active {
-    @apply text-white;
+    @apply font-semibold text-ibm-ink;
   }
+
   .tab-btn.active::after {
-    content: '';
-    @apply absolute bottom-0 left-0 right-0 h-0.5 bg-blue-500;
+    content: "";
+    @apply absolute bottom-0 left-0 right-0 h-0.5 bg-ibm-primary;
   }
+
   .tab-btn:not(.active) {
-    @apply text-zinc-500 hover:text-zinc-300;
+    @apply text-ibm-ink-muted hover:text-ibm-ink;
   }
-  .capacity-fill {
-    background: linear-gradient(90deg, #1d4ed8 0%, #3b82f6 100%);
-    box-shadow: 0 0 20px rgba(59,130,246,0.3);
-  }
+
   .route-pulse {
-    animation: pulse-dot 2s infinite;
+    animation: none;
   }
-  @keyframes pulse-dot {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(59,130,246,0.7); }
-    70% { box-shadow: 0 0 0 10px rgba(59,130,246,0); }
-  }
+
   .sidebar-link {
-    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-zinc-400 text-sm transition-colors hover:bg-white/5;
+    @apply flex min-h-12 items-center gap-3 px-4 text-sm text-ibm-ink transition-colors hover:bg-ibm-surface-1;
   }
+
   .sidebar-link.active {
-    @apply bg-blue-500/15 text-blue-400 border-r-[3px] border-blue-500;
+    @apply border-l-[3px] border-ibm-primary bg-ibm-surface-1 pl-[13px] text-ibm-ink;
   }
+
   .detail-panel {
-    animation: slideIn 0.4s cubic-bezier(0.4,0,0.2,1);
+    animation: none;
   }
-  @keyframes slideIn {
-    from { opacity: 0; transform: translateX(20px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
+
   .photo-thumb {
-    @apply transition-transform duration-200 hover:scale-105 hover:border-blue-500;
+    @apply transition-colors duration-150 hover:border-ibm-primary hover:bg-ibm-surface-1;
   }
+
   .status-badge {
-    @apply text-[0.65rem] tracking-wider uppercase;
+    @apply text-xs;
   }
 }
 
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: #18181b; }
-::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #52525b; }
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f4f4f4;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c6c6c6;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8d8d8d;
+}

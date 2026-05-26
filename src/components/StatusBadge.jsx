@@ -1,13 +1,12 @@
 export default function StatusBadge({ status, color }) {
   const map = {
-    emerald: { bg: "bg-emerald-500/10", text: "text-emerald-400", dot: "bg-emerald-500" },
-    amber:   { bg: "bg-amber-500/10",  text: "text-amber-400",  dot: "bg-amber-500" },
+    emerald: { bg: "bg-[#defbe6]", text: "text-[#0e6027]", dot: "bg-ibm-success" },
+    amber:   { bg: "bg-[#fcf4d6]", text: "text-[#684e00]", dot: "bg-ibm-warning" },
   };
   const s = map[color] || map.emerald;
-  const pulse = color === "emerald" ? "route-pulse" : "";
   return (
-    <span className={`status-badge px-2 py-1 rounded-full ${s.bg} ${s.text} flex items-center gap-1.5`}>
-      <span className={`w-1.5 h-1.5 rounded-full ${s.dot} ${pulse}`} />
+    <span className={`status-badge inline-flex min-h-7 items-center gap-2 px-3 ${s.bg} ${s.text}`}>
+      <span className={`h-2 w-2 ${s.dot}`} />
       {status}
     </span>
   );
