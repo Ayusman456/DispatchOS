@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body { @apply bg-zinc-950 text-zinc-200 antialiased; }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-zinc-900/80 backdrop-blur-md border border-zinc-700/50;
+  }
+  .tracking-card {
+    @apply transition-all duration-300 border border-zinc-800 bg-zinc-900 rounded-xl p-4 cursor-pointer;
+  }
+  .tracking-card:hover {
+    @apply border-zinc-600 -translate-y-0.5 shadow-xl;
+    box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
+  }
+  .tracking-card.active {
+    @apply border-blue-500;
+    box-shadow: 0 0 0 1px #3b82f6, 0 10px 40px -10px rgba(59,130,246,0.2);
+  }
+  .partner-pill {
+    @apply px-3 py-1.5 rounded-lg border border-zinc-800 bg-zinc-900 text-xs text-zinc-300 flex items-center gap-2 transition-colors hover:bg-zinc-800;
+  }
+  .partner-pill.active {
+    @apply bg-zinc-800 border-zinc-500;
+  }
+  .tab-btn {
+    @apply relative pb-3 text-sm font-medium transition-colors;
+  }
+  .tab-btn.active {
+    @apply text-white;
+  }
+  .tab-btn.active::after {
+    content: '';
+    @apply absolute bottom-0 left-0 right-0 h-0.5 bg-blue-500;
+  }
+  .tab-btn:not(.active) {
+    @apply text-zinc-500 hover:text-zinc-300;
+  }
+  .capacity-fill {
+    background: linear-gradient(90deg, #1d4ed8 0%, #3b82f6 100%);
+    box-shadow: 0 0 20px rgba(59,130,246,0.3);
+  }
+  .route-pulse {
+    animation: pulse-dot 2s infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(59,130,246,0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(59,130,246,0); }
+  }
+  .sidebar-link {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-zinc-400 text-sm transition-colors hover:bg-white/5;
+  }
+  .sidebar-link.active {
+    @apply bg-blue-500/15 text-blue-400 border-r-[3px] border-blue-500;
+  }
+  .detail-panel {
+    animation: slideIn 0.4s cubic-bezier(0.4,0,0.2,1);
+  }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  .photo-thumb {
+    @apply transition-transform duration-200 hover:scale-105 hover:border-blue-500;
+  }
+  .status-badge {
+    @apply text-[0.65rem] tracking-wider uppercase;
+  }
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #18181b; }
+::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #52525b; }
